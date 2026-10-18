@@ -3,7 +3,10 @@ from django.db import models
 
 from django.db import models
 class Post(models.Model):
-    channel = models.ForeignKey("channel.Channel" , on_delete = models.CASCADE, related_name = "posts")
+    channel = models.ForeignKey(
+    "channels.Channel",
+    on_delete=models.CASCADE,
+    related_name="posts" )
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=500, blank=True)
     content = models.TextField(max_length=20000)

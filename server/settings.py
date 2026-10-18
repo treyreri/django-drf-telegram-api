@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     "accounts",
     "profiles",
     "chats",
-    "messages",
+    "messages.apps.ChatMessagesConfig",
     "groups",
     "group_messages",
     "channels",

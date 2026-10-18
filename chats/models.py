@@ -7,8 +7,15 @@ from django.conf import settings
 from django.db.models import Q, F
 
 class Chat(models.Model):
-    user_1 = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.СASCADE, related_name="chats_as_user_1")
-    user_2 = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name = "chats_as_user_1")
+    user_1 = models.ForeignKey(
+    settings.AUTH_USER_MODEL,
+    on_delete=models.CASCADE,
+    related_name="chats_as_user_1")
+
+    user_2 = models.ForeignKey(
+    settings.AUTH_USER_MODEL,
+    on_delete=models.CASCADE,
+    related_name="chats_as_user_2")
     created_at = models.DateTimeField(auto_now_add=True)
     class Meta:
         constraints = [models.CheckConstraint(
