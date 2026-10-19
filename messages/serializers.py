@@ -1,0 +1,12 @@
+from rest_framework import serializers
+from .models import Message
+class MessageSerializer(serializers.ModelSerializer):
+    sender = serializers.IntegerField(read_only=True)
+    class Meta:
+        model = Message
+        fields = ("id", "chat", "sender", "content", "created_at")
+        read_only_fields = ("id", "chat", "sender", "created_at")
+    def validate_content(self, value):
+        if not value.strip(): 
+            raise serializers.ValidationError("Message cannot be empty.")
+        return value
